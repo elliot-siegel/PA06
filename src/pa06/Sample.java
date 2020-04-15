@@ -1,5 +1,7 @@
 package pa06;
 
+import java.util.ArrayList;
+
 public class Sample {
   ArrayList<Double> sample;
 	
