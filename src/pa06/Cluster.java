@@ -30,4 +30,8 @@ public class Cluster {
 			System.out.println(samples.get(i));
 		}
 	}
+	
+	public ArrayList<Sample> getSamples(){
+		return this.samples;
+	}
 }
