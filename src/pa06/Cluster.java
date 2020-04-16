@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Cluster {
 	
 	private ArrayList<Sample> samples;
-	Sample clusterPt;
+	private Sample clusterPt;
 	
 	public Cluster() {
 		samples = new ArrayList<Sample>();
@@ -16,12 +16,11 @@ public class Cluster {
 		this.samples.add(s);
 	}
 	
-	public Sample getRandomPt() {
+	public void getRandomPt() {
 		Random rand = new Random();
 		int index = rand.nextInt(this.samples.size() - 1);
 		Sample s = this.samples.get(index);
 		this.clusterPt = s;
-		return s;
 	}
 	
 	public void printCluster() {
@@ -31,7 +30,7 @@ public class Cluster {
 		}
 	}
 	
-	public ArrayList<Sample> getSamples(){
-		return this.samples;
+	public Sample getClusterPt(){
+		return this.clusterPt;
 	}
 }
