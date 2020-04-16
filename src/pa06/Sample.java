@@ -23,11 +23,11 @@ public class Sample {
 	 * dimension and find distance
 	 */
 	
-	public double distance(double[] p1, double[] p2) {
-		if (p1.length == p2.length) {
+	public double distance(Sample s) {
+		if (this.sample.size() == s.sample.size()) {
 			Double sum = 0D;
-			for (int i = 0; i < p1.length; i++) {
-				double tmp = p2[i] - p1[i];
+			for (int i = 0; i < this.sample.size(); i++) {
+				double tmp = this.sample.get(i) - s.sample.get(i);
 				sum = sum + tmp * tmp;
 			}
 			return Math.sqrt(sum);
@@ -46,7 +46,7 @@ public class Sample {
 		Sample s2 = new Sample(p2);
 		System.out.println("s1="+s1);
 		System.out.println("s2="+s2);
-		double value = s2.distance(p1, p2);
+		double value = s2.distance(s1);
 		System.out.println(value);
 
 		}
