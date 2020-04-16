@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Cluster {
 	
-	ArrayList<Sample> samples;
+	private ArrayList<Sample> samples;
 	Sample clusterPt;
 	
 	public Cluster() {
@@ -22,5 +22,12 @@ public class Cluster {
 		Sample s = this.samples.get(index);
 		this.clusterPt = s;
 		return s;
+	}
+	
+	public void printCluster() {
+		System.out.println("Samples in cluster:");
+		for(int i=0; i<samples.size(); i++) {
+			System.out.println(samples.get(i));
+		}
 	}
 }
