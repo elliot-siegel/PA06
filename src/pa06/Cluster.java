@@ -12,15 +12,19 @@ public class Cluster {
 		samples = new ArrayList<Sample>();
 	}
 	
+	public Cluster(Sample clusterPt) {
+		samples = new ArrayList<Sample>();
+		this.clusterPt = clusterPt;
+	}
+	
 	public void addSample(Sample s) {
 		this.samples.add(s);
 	}
 	
-	public void getRandomPt() {
+	public Sample getRandomPt() {
 		Random rand = new Random();
 		int index = rand.nextInt(this.samples.size() - 1);
-		Sample s = this.samples.get(index);
-		this.clusterPt = s;
+		return this.samples.get(index);
 	}
 	
 	public void printCluster() {
