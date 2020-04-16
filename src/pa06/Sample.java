@@ -36,19 +36,9 @@ public class Sample {
 			throw new ArithmeticException("Exception in Euclidean distance: array lengths are not equal");
 		}
 	}
-
-
-	public static void main(String[] args) {
-		System.out.println("testing for the Sample class.");
-		double[] p1 = {2, 2};
-		double[] p2 = {0, 0};
-		Sample s1 = new Sample(p1);
-		Sample s2 = new Sample(p2);
-		System.out.println("s1="+s1);
-		System.out.println("s2="+s2);
-		double value = s2.distance(s1);
-		System.out.println(value);
-
-		}
+	
+	public String toString() {
+		return this.sample.toString();
+	}
 
 }
