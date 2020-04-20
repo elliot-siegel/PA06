@@ -65,34 +65,34 @@ public class Kmeans{
    }
 
  }
-   //public static void main(String[] args) {
 
-     //KMeans kmeans = new KMeans();
-     //kmeans.origin();
-     //kmeans.calculate();
-   //}
+   //step 6
+   	/**
+   	 *
+   	 * @param points an array of clusters (probably the clusters variable)
+   	 * @param k a sample point
+   	 * @return the cluster whose sample point is closest to k
+   	 */
+      public static Cluster closestSample(Cluster[] points, Sample k) {
 
-   //sample/cluster
-//step 6
-	/**
-	 * 
-	 * @param points an array of clusters (probably the clusters variable)
-	 * @param k a sample point
-	 * @return the cluster whose sample point is closest to k
-	 */
-   public Cluster closestSample(Cluster[] points, Sample k) {
-	   	
-	   	int n = points.length;
-	   	double closest = k.distance(points[0].getClusterPt());
-	   	Cluster ans = points[0];
-	   	
-	   	for (int i = 1; i < n; i++) {
-	   		if (k.distance(points[i].getClusterPt()) > closest) {
-	   			ans = points[i];
-	   		}
-	   	}
-	   	
-	   	return ans;
-        
-    }    
+   	   	int n = points.length;
+   	   	double closest = k.distance(points[0].getClusterPt());
+   	   	Cluster ans = points[0];
+
+   	   	for (int i = 1; i < n; i++) {
+   	   		if (k.distance(points[i].getClusterPt()) < closest) {
+   	   			ans = points[i];
+   	   		}
+   	   	}
+
+   	   	return ans;
+
+       }
+       //step 7
+       public void reclassify(){
+         for(int m = 1; m < originalData.length; m++){
+          Cluster C =  closestSample(clusters, originalData.getSample[m]);
+          C.addSample(originalData.getSample[m]);
+         }    
+       }
 }
