@@ -9,9 +9,18 @@ public class Kmeans{
 
   private Cluster[] clusters;
   private Cluster originalData;
+  private int dimension;
 
-  public Kmeans(int numClusters) {
-  // initialize clusters and originalData
+  public Kmeans(int numClusters, int dimension) {
+	  this.clusters = new Cluster[numClusters];
+	  this.originalData = new Cluster();
+	  Sample s = new Sample();
+	  
+	  //add 0's to the first sample according to the dimension of the data
+	  for (int i = 0; i < dimension; i++) s.addValue(0);
+	  this.originalData.addSample(s);
+	  
+	  this.dimension = dimension;
   }
 
   public void dataCheck(String fileName) throws FileNotFoundException {
@@ -21,19 +30,12 @@ public class Kmeans{
      Scanner reader = new Scanner(new File(fileName));
 
      while(reader.hasNext()) {
-
-       //Use reader.nextLine() to get a line of the file
-       String line = reader.nextLine ();
-       //Create a new Scanner(reader.nextLine) to read that line
-       Scanner readstring = new Scanner(line);
-
-       //Loop through it in another while loop, add each nextInt to an array of doubles
-       while(readstring.hasNext()){
-         ObejctCluster[i]= readstring.nextLine();
-         i++;
-         //Create a new sample with that array, then add the sample to a cluster
-         Cluster.add(ObejctCluster);
-       }
+    	 
+    	 Sample objectCluster = new Sample();
+    	 
+    	 for (int i = 0; i < dimension; i++) objectCluster.addValue(reader.nextDouble());
+    	 
+    	 originalData.addSample(objectCluster);
 
      }
 
@@ -45,27 +47,16 @@ public class Kmeans{
  }
  public static void main(String[] args) {
    Scanner userInput = new Scanner(System.in);
-   System.out.print("Data file name: ");
+   System.out.println("Data file name: ");
    String fileName = userInput.next();
-   System.out.print("Number of clusters: ");
+   System.out.println("Number of clusters: ");
    int numClusters = userInput.nextInt();
+   System.out.println("Dimension of the data set: ");
+   int dimension = userInput.nextInt();
 
    // create new Kmeans(numClusters) and then use dataCheck to read the data
-   private List points;
-   private List clusters;
-
-   public KMeans() {
-     this.points = new ArrayList();
-     this.clusters = new ArrayList();
-   }
-
-   public static void main(String[] args) {
-
-     KMeans kmeans = new KMeans();
-     kmeans.origin();
-     kmeans.calculate();
-   }
-}
-
+   Kmeans kmeans = new Kmeans(numClusters, dimension);
+   kmeans.dataCheck(fileName);
+   
  }
 }

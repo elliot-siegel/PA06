@@ -11,12 +11,13 @@ import java.util.ArrayList;
 public class Sample {
 	ArrayList<Double> sample;
 
-	public Sample(double[] values) {
+	public Sample() {
 		this.sample = new ArrayList<Double>();
-		for (int i=0; i<values.length; i++) {
-			sample.add(values[i]);
-		}
 
+	}
+	
+	public void addValue(double p) {
+		this.sample.add(p);
 	}
 	
 	/** 
