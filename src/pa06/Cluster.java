@@ -37,4 +37,8 @@ public class Cluster {
 	public Sample getClusterPt(){
 		return this.clusterPt;
 	}
+	
+	public int length() {
+		return samples.size();
+	}
 }
