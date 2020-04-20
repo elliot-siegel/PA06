@@ -41,4 +41,8 @@ public class Cluster {
 	public int length() {
 		return samples.size();
 	}
+	
+	public Sample getSample(int i) {
+		return samples.get(i);
+	}
 }
