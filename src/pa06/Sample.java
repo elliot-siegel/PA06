@@ -41,7 +41,10 @@ public class Sample {
 	public String toString() {
 		return this.sample.toString();
 	}
-	public double getValue(double p){
-			this.sample.get(p);
+	public double getValue(int p){
+		return this.sample.get(p);
+	}
+	public int length() {
+		return this.length();
 	}
 }

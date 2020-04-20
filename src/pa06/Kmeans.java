@@ -1,7 +1,6 @@
 package pa06;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
@@ -64,6 +63,12 @@ public class Kmeans{
    } catch(FileNotFoundException e) {
 	   System.out.println("Data file not found");
    }
+   
+   kmeans.kmeans();
+   
+   kmeans.print();
+   
+   userInput.close();
 
  }
 
@@ -116,7 +121,7 @@ public class Kmeans{
     	   //checks if there are more clusters than sample points
     	   if(originalData.length() < clusters.length) {
     		   System.out.println("There may not be more clusters than samples");
-    		   break;
+    		   return;
     	   }
     	   
     	   ArrayList<Sample> exclude = new ArrayList<Sample>();
@@ -133,6 +138,12 @@ public class Kmeans{
 			   clusters[i].setClusterPt(s);
 			   reclassify();
 		   }
+       }
+       
+       public void print() {
+    	   for(int i = 0; i < clusters.length; i++) {
+    		   System.out.println(clusters[i]);
+    	   }
        }
        
 }

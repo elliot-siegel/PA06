@@ -37,6 +37,10 @@ public class Cluster {
 	public Sample getClusterPt(){
 		return this.clusterPt;
 	}
+	
+	public void setClusterPt(Sample s) {
+		this.clusterPt = s;
+	}
 
 	public int length() {
 		return samples.size();
@@ -45,16 +49,21 @@ public class Cluster {
 	public Sample getSample(int i) {
 		return samples.get(i);
 	}
+	
 	public Sample average(){
 		Sample averagesample = new Sample();
-		for(int m = 0; m <sample(0).length, m++){
+		for(int m = 0; m <samples.get(0).length(); m++){
 			double average = 0;
-		for(int n =0; n<samples.size(); n++){
-			average = (average + samples[n][m]);
+			for(int n =0; n<samples.size(); n++){
+				average = (average + samples.get(n).getValue(m));
+			}
+			average = average/samples.size();
+			averagesample.addValue(average);
 		}
-		average = average/samples.size;
-		averagesample.add(average);
-	}
 	return averagesample;
+	}
+	
+	public void clearData() {
+		samples = new ArrayList<Sample>();
 	}
 }
