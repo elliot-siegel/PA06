@@ -15,15 +15,15 @@ public class Sample {
 		this.sample = new ArrayList<Double>();
 
 	}
-	
+
 	public void addValue(double p) {
 		this.sample.add(p);
 	}
-	
-	/** 
+
+	/**
 	 * dimension and find distance
 	 */
-	
+
 	public double distance(Sample s) {
 		if (this.sample.size() == s.sample.size()) {
 			Double sum = 0D;
@@ -37,9 +37,11 @@ public class Sample {
 			throw new ArithmeticException("Exception in Euclidean distance: array lengths are not equal");
 		}
 	}
-	
+
 	public String toString() {
 		return this.sample.toString();
 	}
-
+	public double getValue(double p){
+			this.sample.get(p);
+	}
 }
