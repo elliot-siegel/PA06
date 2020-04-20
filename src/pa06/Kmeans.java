@@ -65,7 +65,6 @@ public class Kmeans{
    }
 
  }
-}
    //public static void main(String[] args) {
 
      //KMeans kmeans = new KMeans();
@@ -75,23 +74,25 @@ public class Kmeans{
 
    //sample/cluster
 //step 6
-   public int[][] Closestsample(int[][] points, int K) {
-        int N = points.length;
-        int[] distance = new int[N];
-        for (int i = 0; i < N; ++i)
-            distance[i] = dist(points[i]);
-
-        Arrays.sort(distance);
-        int distanceofK = distance[K-1];
-
-        int[][] ans = new int[K][2];
-        int t = 0;
-        for (int i = 0; i < N; ++i)
-            if (dist(points[i]) <= distanceofK)
-                ans[t++] = points[i];
-        return ans;
+	/**
+	 * 
+	 * @param points an array of clusters (probably the clusters variable)
+	 * @param k a sample point
+	 * @return the cluster whose sample point is closest to k
+	 */
+   public Cluster closestSample(Cluster[] points, Sample k) {
+	   	
+	   	int n = points.length;
+	   	double closest = k.distance(points[0].getClusterPt());
+	   	Cluster ans = points[0];
+	   	
+	   	for (int i = 1; i < n; i++) {
+	   		if (k.distance(points[i].getClusterPt()) > closest) {
+	   			ans = points[i];
+	   		}
+	   	}
+	   	
+	   	return ans;
+        
     }    
-    public int dist(int[] point) {
-        return point[0] * point[0] + point[1] * point[1];
-    }
 }
