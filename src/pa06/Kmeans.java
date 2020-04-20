@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
+import java.util.ArrayList;
 
 public class Kmeans{
 
@@ -96,5 +97,42 @@ public class Kmeans{
          }
        }
        //step 9
+       
+       public void kmeans() {
+    	   
+    	  initializeClusters();
+    	   
+    	   for (int count = 0; count < 100; count++) {
+    		   for(int i = 0; i < clusters.length; i++) {
+    			   clusters[i].clearData();
+    			   clusters[i].setClusterPt(clusters[i].average());
+    		   }
+    		   reclassify();
+    	   }
+       }
+       
+       public void initializeClusters() {
+    	   
+    	   //checks if there are more clusters than sample points
+    	   if(originalData.length() < clusters.length) {
+    		   System.out.println("There may not be more clusters than samples");
+    		   break;
+    	   }
+    	   
+    	   ArrayList<Sample> exclude = new ArrayList<Sample>();
+    	   
+    	   //set original random cluster point values
+    	   for(int i = 0; i < clusters.length; i++) {
+    		   Sample s;
+    		   
+    		   //makes sure clusters do not share sample points
+			   do {
+				   s = originalData.getRandomPt();
+			   } while(exclude.contains(s));
+			   
+			   clusters[i].setClusterPt(s);
+			   reclassify();
+		   }
+       }
        
 }
