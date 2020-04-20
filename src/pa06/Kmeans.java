@@ -90,9 +90,11 @@ public class Kmeans{
        }
        //step 7
        public void reclassify(){
-         for(int m = 1; m < originalData.length; m++){
+         for(int m = 0; m < originalData.length; m++){
           Cluster C =  closestSample(clusters, originalData.getSample[m]);
           C.addSample(originalData.getSample[m]);
-         }    
+         }
        }
+       //step 9
+       
 }
