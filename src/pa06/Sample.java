@@ -45,6 +45,6 @@ public class Sample {
 		return this.sample.get(p);
 	}
 	public int length() {
-		return this.length();
+		return this.sample.size();
 	}
 }

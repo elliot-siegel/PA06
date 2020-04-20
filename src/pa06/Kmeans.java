@@ -13,6 +13,10 @@ public class Kmeans{
 
   public Kmeans(int numClusters, int dimension) {
 	  this.clusters = new Cluster[numClusters];
+	  for(int i = 0; i < numClusters; i++) {
+		  this.clusters[i] = new Cluster();
+	  }
+	  
 	  this.originalData = new Cluster();
 	  Sample s = new Sample();
 
@@ -109,8 +113,9 @@ public class Kmeans{
     	   
     	   for (int count = 0; count < 100; count++) {
     		   for(int i = 0; i < clusters.length; i++) {
-    			   clusters[i].clearData();
     			   clusters[i].setClusterPt(clusters[i].average());
+    			   clusters[i].clearData();
+    			   
     		   }
     		   reclassify();
     	   }
@@ -136,13 +141,13 @@ public class Kmeans{
 			   } while(exclude.contains(s));
 			   
 			   clusters[i].setClusterPt(s);
-			   reclassify();
 		   }
+    	   reclassify();
        }
        
        public void print() {
     	   for(int i = 0; i < clusters.length; i++) {
-    		   System.out.println(clusters[i]);
+    		   clusters[i].printCluster();
     	   }
        }
        
