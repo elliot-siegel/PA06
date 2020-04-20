@@ -45,6 +45,7 @@ public class Kmeans{
      System.out.println("Data file not found");
    }
  }
+  
  public static void main(String[] args) {
    Scanner userInput = new Scanner(System.in);
    System.out.println("Data file name: ");
@@ -56,7 +57,12 @@ public class Kmeans{
 
    // create new Kmeans(numClusters) and then use dataCheck to read the data
    Kmeans kmeans = new Kmeans(numClusters, dimension);
-   kmeans.dataCheck(fileName);
+   
+   try {
+	   kmeans.dataCheck(fileName);
+   } catch(FileNotFoundException e) {
+	   System.out.println("Data file not found");
+   }
    
  }
 }
