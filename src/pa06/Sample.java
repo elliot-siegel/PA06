@@ -26,7 +26,7 @@ public class Sample {
 
 	public double distance(Sample s) {
 		if (this.sample.size() == s.sample.size()) {
-			Double sum = 0D;
+			double sum = 0;
 			for (int i = 0; i < this.sample.size(); i++) {
 				double tmp = this.sample.get(i) - s.sample.get(i);
 				sum = sum + tmp * tmp;

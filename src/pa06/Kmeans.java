@@ -21,8 +21,8 @@ public class Kmeans{
 	  Sample s = new Sample();
 
 	  //add 0's to the first sample according to the dimension of the data
-	  for (int i = 0; i < dimension; i++) s.addValue(0);
-	  this.originalData.addSample(s);
+	  //for (int i = 0; i < dimension; i++) s.addValue(0);
+	  //this.originalData.addSample(s);
 
 	  this.dimension = dimension;
   }
@@ -89,12 +89,12 @@ public class Kmeans{
    	   	double closest = k.distance(points[0].getClusterPt());
    	   	Cluster ans = points[0];
 
-   	   	for (int i = 1; i < n; i++) {
+   	   	for (int i = 0; i < n; i++) {
    	   		if (k.distance(points[i].getClusterPt()) < closest) {
    	   			ans = points[i];
+
    	   		}
    	   	}
-
    	   	return ans;
 
        }
@@ -110,7 +110,7 @@ public class Kmeans{
        public void kmeans() {
     	   
     	  initializeClusters();
-    	   
+
     	   for (int count = 0; count < 100; count++) {
     		   for(int i = 0; i < clusters.length; i++) {
     			   clusters[i].setClusterPt(clusters[i].average());
@@ -140,6 +140,7 @@ public class Kmeans{
 				   s = originalData.getRandomPt();
 			   } while(exclude.contains(s));
 			   
+			   exclude.add(s);
 			   clusters[i].setClusterPt(s);
 		   }
     	   reclassify();

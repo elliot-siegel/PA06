@@ -52,7 +52,7 @@ public class Cluster {
 	
 	public Sample average(){
 		Sample averagesample = new Sample();
-		this.printCluster();
+		
 		for(int m = 0; m <samples.get(0).length(); m++){
 			double average = 0;
 			for(int n =0; n<samples.size(); n++){
