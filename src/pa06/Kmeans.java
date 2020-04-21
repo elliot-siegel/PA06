@@ -88,11 +88,12 @@ public class Kmeans{
    	   	int n = points.length;
    	   	double closest = k.distance(points[0].getClusterPt());
    	   	Cluster ans = points[0];
-
+   	   	
    	   	for (int i = 0; i < n; i++) {
+
    	   		if (k.distance(points[i].getClusterPt()) < closest) {
    	   			ans = points[i];
-
+   	   			closest = k.distance(points[i].getClusterPt());
    	   		}
    	   	}
    	   	return ans;
@@ -111,7 +112,7 @@ public class Kmeans{
     	   
     	  initializeClusters();
 
-    	   for (int count = 0; count < 100; count++) {
+    	   for (int count = 0; count < 1000; count++) {
     		   for(int i = 0; i < clusters.length; i++) {
     			   clusters[i].setClusterPt(clusters[i].average());
     			   clusters[i].clearData();
@@ -148,7 +149,7 @@ public class Kmeans{
        
        public void print() {
     	   for(int i = 0; i < clusters.length; i++) {
-    		   clusters[i].printCluster();
+    		   System.out.println(clusters[i].getClusterPt());
     	   }
        }
        
